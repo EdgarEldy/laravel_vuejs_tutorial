@@ -29,5 +29,8 @@
     "main": "index.js",
     "repository": "https://github.com/EdgarEldy/laravel_vuejs_tutorial.git",
     "author": "Edgar Eldy <ed.eldy21@live.com>",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "vue-router": "^3.5.1"
+    }
 }
