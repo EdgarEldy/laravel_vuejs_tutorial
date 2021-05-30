@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
@@ -31,6 +31,8 @@
     "author": "Edgar Eldy <ed.eldy21@live.com>",
     "license": "MIT",
     "dependencies": {
+        "moment": "^2.29.1",
+        "vform": "^2.0.4",
         "vue-router": "^3.5.1"
     }
 }
