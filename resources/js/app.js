@@ -15,6 +15,12 @@ import VueRouter from 'vue-router';
 // Use VueRouter
 Vue.use(VueRouter);
 
+// Create the router instance and pass the `routes` option
+import { routes } from './routes';
+const router = new VueRouter({
+    routes
+});
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,4 +42,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    // Inject the router options
+    router: router
 });
