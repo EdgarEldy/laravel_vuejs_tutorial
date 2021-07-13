@@ -34,7 +34,7 @@ const router = new VueRouter({
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('navbar-component', require('./components/partials/NavbarComponent').default);
-
+Vue.component('sidebar-component', require('./components/partials/SidebarComponent').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
