@@ -17,6 +17,7 @@
     </head>
     <body>
         <div id="app">
+            <navbar-component></navbar-component>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
