@@ -10,10 +10,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/bootstrap-table.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/fontawesome.min.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="app">
