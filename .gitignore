@@ -17,3 +17,6 @@ yarn.lock
 
 # .idea files #
 .idea
+
+# app.css
+public/css/app.css
