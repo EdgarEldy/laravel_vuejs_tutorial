@@ -42,11 +42,21 @@
 <script>
 export default {
     name: "IndexComponent",
-    
-    data(){
+
+    data() {
         return {
             categories: {}
         };
+    },
+
+    // methods goes here
+    methods: {
+        // Retrieve product categories from backend
+        getCategories() {
+            axios.get('/http://localhost:8000/api/categories')
+                .then(response => (this.categories = response.data.data))
+                .catch(error => console.log(error));
+        },
     },
 }
 </script>
