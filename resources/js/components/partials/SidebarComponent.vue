@@ -44,12 +44,12 @@
               </a>
             </li>
             <li>
-              <a class="" href="#"
+              <router-link to="/categories"
                 ><svg class="glyph stroked clock">
                   <use xlink:href="#stroked-clock"></use>
                 </svg>
                 Categories
-              </a>
+              </router-link>
             </li>
           </ul>
         </li>
