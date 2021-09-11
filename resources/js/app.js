@@ -15,6 +15,9 @@ import VueRouter from 'vue-router';
 // Use VueRouter
 Vue.use(VueRouter);
 
+// Initialize laravel-vue-pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 // Create the router instance and pass the `routes` option
 import { routes } from './routes';
 const router = new VueRouter({
