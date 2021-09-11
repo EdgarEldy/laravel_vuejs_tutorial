@@ -15,9 +15,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>}</td>
-                            <td></td>
+                        <tr v-if="category in categories" :key="category.id">
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.category_name }}</td>
                             <td>
                                 <div class="card-footer">
                                     <a href="" class="btn btn-primary">Edit</a>
