@@ -20,7 +20,8 @@
                         <form action="">
                             <div class="form-group">
                                 <label for="category name">Category name </label>
-                                <input type="text" id="category_name" name="category_name" v-model="category_name" class="form-control" value="" />
+                                <input type="text" id="category_name" name="category_name" v-model="category_name"
+                                       class="form-control" value=""/>
                             </div>
                         </form>
                     </div>
@@ -38,10 +39,21 @@
 export default {
     name: "CategoryAddComponent",
 
-    data(){
+    data() {
         return {
             category_name: ''
         }
+    },
+
+    // Methods goes here..
+    methods: {
+        storeCategory() {
+            axios.post('http://localhost:8000/api/categories', {
+                category_name: this.category_name
+            })
+                .then(response => console.log(response))
+                .catch(error => console.log(error));
+        },
     }
 }
 </script>
