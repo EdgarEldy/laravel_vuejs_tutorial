@@ -49,6 +49,11 @@ export default {
         };
     },
 
+    created() {
+        // Call getCategories method and mount
+        this.getCategories();
+    },
+
     // methods goes here
     methods: {
         // Retrieve product categories from backend
