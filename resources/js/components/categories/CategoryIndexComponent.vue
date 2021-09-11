@@ -4,7 +4,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Product categories</div>
                 <div class="panel-body">
-                    <a href="#" class="btn btn-primary">New</a>
+                    <add-category></add-category>
                     <br><br>
                     <table class="table table-striped table-bordered">
                         <thead>
