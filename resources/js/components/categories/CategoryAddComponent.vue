@@ -36,7 +36,13 @@
 
 <script>
 export default {
-    name: "CategoryAddComponent"
+    name: "CategoryAddComponent",
+
+    data(){
+        return {
+            category_name: ''
+        }
+    }
 }
 </script>
 
