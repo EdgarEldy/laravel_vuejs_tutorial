@@ -15,7 +15,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-if="category in categories" :key="category.id">
+                        <tr v-for="category in categories" :key="category.id">
                             <td>{{ category.id }}</td>
                             <td>{{ category.category_name }}</td>
                             <td>
@@ -58,7 +58,7 @@ export default {
     methods: {
         // Retrieve product categories from backend
         getCategories() {
-            axios.get('/http://localhost:8000/api/categories')
+            axios.get('http://localhost:8000/api/categories')
                 .then(response => (this.categories = response.data.data))
                 .catch(error => console.log(error));
         },
