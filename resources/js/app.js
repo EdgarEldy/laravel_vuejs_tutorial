@@ -18,6 +18,9 @@ Vue.use(VueRouter);
 // Initialize laravel-vue-pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
 
+// Add add-category modal
+Vue.component('add-category', require('./components/categories/CategoryAddComponent').default);
+
 // Create the router instance and pass the `routes` option
 import { routes } from './routes';
 const router = new VueRouter({
