@@ -15,6 +15,15 @@ yarn-error.log
 composer.lock
 package-lock.json
 yarn.lock
-/public/css/app.css
-/public/js/app.js
-/public/mix-manifest.json
+
+# .idea files #
+.idea
+
+# app.css
+public/css/app.css
+
+# app.js
+public/js/app.js
+
+# mix-manifest.json
+public/mix-manifest.json
