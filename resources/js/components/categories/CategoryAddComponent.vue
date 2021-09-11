@@ -20,7 +20,7 @@
                         <form action="">
                             <div class="form-group">
                                 <label for="category name">Category name </label>
-                                <input type="text" class="form-control" value="" />
+                                <input type="text" id="category_name" name="category_name" v-model="category_name" class="form-control" value="" />
                             </div>
                         </form>
                     </div>
