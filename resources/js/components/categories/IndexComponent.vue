@@ -41,7 +41,13 @@
 
 <script>
 export default {
-    name: "IndexComponent"
+    name: "IndexComponent",
+    
+    data(){
+        return {
+            categories: {}
+        };
+    },
 }
 </script>
 
