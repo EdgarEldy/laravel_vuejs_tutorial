@@ -10,12 +10,29 @@ window.Vue = require('vue').default;
 
 // Setting validation errors using vform
 import Form from 'vform';
-import  HasError from 'vform';
+import HasError from 'vform';
 import AlertError from "vform";
 
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+
+// Setting up sweetalert2
+import Swal from 'sweetalert2';
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+window.Swal = Swal;
+window.Toast = Toast;
 
 // Import Vue and VueRouter
 import Vue from 'vue';
