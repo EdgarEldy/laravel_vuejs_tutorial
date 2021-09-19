@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import moment from 'moment';
 
 // Setting validation errors using vform
 import Form from 'vform';
