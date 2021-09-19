@@ -8,6 +8,15 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+// Setting validation errors using vform
+import Form from 'vform';
+import  HasError from 'vform';
+import AlertError from "vform";
+
+window.Form = Form;
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
 // Import Vue and VueRouter
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -16,7 +25,8 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 // Create the router instance and pass the `routes` option
-import { routes } from './routes';
+import {routes} from './routes';
+
 const router = new VueRouter({
     routes
 });
