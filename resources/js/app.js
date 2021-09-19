@@ -15,9 +15,6 @@ import VueRouter from 'vue-router';
 // Use VueRouter
 Vue.use(VueRouter);
 
-// Initialize laravel-vue-pagination
-Vue.component('pagination', require('laravel-vue-pagination'));
-
 // Create the router instance and pass the `routes` option
 import { routes } from './routes';
 const router = new VueRouter({
@@ -36,6 +33,9 @@ const router = new VueRouter({
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+// Initialize laravel-vue-pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('navbar-component', require('./components/partials/NavbarComponent').default);
 Vue.component('sidebar-component', require('./components/partials/SidebarComponent').default);
 /**
