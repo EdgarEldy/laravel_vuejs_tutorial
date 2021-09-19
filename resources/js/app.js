@@ -82,6 +82,16 @@ Vue.component('sidebar-component', require('./components/partials/SidebarCompone
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Filter Section
+
+Vue.filter('myDate', function (created) {
+    return moment(created).format('MMMM Do YYYY');
+});
+
+Vue.filter('yesno', value => (value ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>'));
+
+// end Filter
+
 const app = new Vue({
     el: '#app',
     // Inject the router options
