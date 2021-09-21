@@ -170,6 +170,33 @@ export default {
                 });
 
         },
+
+        deleteCategory(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+
+                // Send request to the server
+                if (result.value) {
+                    this.form.delete('api/categories/' + id).then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        );
+
+                        this.getCategories();
+                    }).catch((data) => {
+                        Swal.fire("Failed!", data.message, "warning");
+                    });
+                }
+            })
+        },
     }
 };
 </script>
