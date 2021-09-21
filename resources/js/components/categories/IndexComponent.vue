@@ -24,7 +24,8 @@
                                     <a class="btn btn-primary" href="">Edit</a>
                                     <form action="#" method="POST">
                                         <button class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this category ?')" type="submit">
+                                                onclick="return confirm('Are you sure you want to delete this category ?')"
+                                                type="submit">
                                             Delete
                                         </button>
                                     </form>
@@ -41,7 +42,7 @@
         </div>
 
         <!-- Modal -->
-        <div id="addNew" aria-hidden="true" aria-labelledby="addNew" class="modal fade" role="dialog" tabindex="-1">
+        <div id="modalFormCategory" aria-hidden="true" aria-labelledby="addNew" class="modal fade" role="dialog" tabindex="-1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -104,6 +105,13 @@ export default {
             axios
                 .get("/api/categories?page=" + page)
                 .then(({data}) => (this.categories = data.data));
+        },
+
+        //Load formModalCategory modal if we want to add a new category
+        newModal() {
+            this.editmode = false;
+            this.form.reset();
+            $('#modalFormCategory').modal('show');
         }
     }
 };
