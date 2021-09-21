@@ -4,7 +4,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Product categories</div>
                 <div class="panel-body">
-                    <add-category></add-category>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary">
+                        New
+                    </button>
                     <br><br>
                     <table class="table table-striped table-bordered">
                         <thead>
