@@ -71,6 +71,11 @@ export default {
                 .then(response => (this.categories = response.data))
                 .catch(error => console.log(error));
         },
+        
+        // Load categories with pagination
+        getResults(page = 1) {
+            axios.get('/api/categories?page=' + page).then(({data}) => (this.categories = data.data))
+        }
     },
 }
 </script>
