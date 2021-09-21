@@ -21,7 +21,7 @@
                             <td>{{ category.category_name }}</td>
                             <td>
                                 <div class="card-footer">
-                                    <a class="btn btn-primary" href="">Edit</a>
+                                    <a class="btn btn-primary" href="#" @click="editModal(category)">Edit</a>
                                     <form action="#" method="POST">
                                         <button class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure you want to delete this category ?')"
