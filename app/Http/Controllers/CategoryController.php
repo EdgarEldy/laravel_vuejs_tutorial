@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $request->isMethod('put') ? Category::find($request->id) : new Category();
+        $category = new Category();
 
         $category->category_name = $request->category_name;
         $category->save();
