@@ -1,5 +1,4 @@
 // Routes
-import CategoryIndex from "./components/categories/CategoryIndexComponent";
 export const routes = [
     {
         path: "/",
@@ -7,6 +6,6 @@ export const routes = [
     },
     {
         path: "/categories",
-        component: CategoryIndex
+        component: require('./components/categories/IndexComponent').default
     }
 ];
