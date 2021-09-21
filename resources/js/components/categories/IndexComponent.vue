@@ -53,7 +53,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="editmode ? updateCategory : createCategory">
+                    <form @submit.prevent="editmode ? updateCategory() : createCategory()">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Category name</label>
@@ -127,7 +127,7 @@ export default {
                 .then((response) => {
                     $('#modalFormCategory').modal('hide');
 
-                    Toas.fire({
+                    Toast.fire({
                         icon: 'success',
                         title: response.data.message
                     });
