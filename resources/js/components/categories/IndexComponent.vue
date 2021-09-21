@@ -50,7 +50,11 @@ export default {
         return {
             // Set editmode property to false
             editmode: false,
-            categories: {}
+            categories: {},
+            form: new Form({
+                id: '',
+                category_name: ''
+            })
         };
     },
 
