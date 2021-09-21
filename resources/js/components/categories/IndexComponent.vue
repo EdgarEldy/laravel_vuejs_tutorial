@@ -48,6 +48,8 @@ export default {
 
     data() {
         return {
+            // Set editmode property to false
+            editmode: false,
             categories: {}
         };
     },
