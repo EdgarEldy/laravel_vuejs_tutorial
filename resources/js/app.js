@@ -7,6 +7,42 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import moment from 'moment';
+
+// Setting validation errors using vform
+import Form from 'vform';
+import HasError from 'vform';
+import AlertError from "vform";
+
+window.Form = Form;
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
+// Setting up sweetalert2
+import Swal from 'sweetalert2';
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+window.Swal = Swal;
+window.Toast = Toast;
+
+// Setting up vue-progressbar
+import VueProgressBar from 'vue-progressbar'
+
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '3px'
+});
 
 // Import Vue and VueRouter
 import Vue from 'vue';
@@ -15,14 +51,9 @@ import VueRouter from 'vue-router';
 // Use VueRouter
 Vue.use(VueRouter);
 
-// Initialize laravel-vue-pagination
-Vue.component('pagination', require('laravel-vue-pagination'));
-
-// Add add-category modal
-Vue.component('add-category', require('./components/categories/AddCategoryComponent').default);
-
 // Create the router instance and pass the `routes` option
-import { routes } from './routes';
+import {routes} from './routes';
+
 const router = new VueRouter({
     routes
 });
@@ -39,6 +70,9 @@ const router = new VueRouter({
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+// Initialize laravel-vue-pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('navbar-component', require('./components/partials/NavbarComponent').default);
 Vue.component('sidebar-component', require('./components/partials/SidebarComponent').default);
 /**
@@ -46,6 +80,16 @@ Vue.component('sidebar-component', require('./components/partials/SidebarCompone
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+// Filter Section
+
+Vue.filter('myDate', function (created) {
+    return moment(created).format('MMMM Do YYYY');
+});
+
+Vue.filter('yesno', value => (value ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>'));
+
+// end Filter
 
 const app = new Vue({
     el: '#app',

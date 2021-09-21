@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
 
         return CategoryResource::collection($categories);
     }
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $request->isMethod('put') ? Category::find($request->id) : new Category();
+        $category = new Category();
 
         $category->category_name = $request->category_name;
         $category->save();
@@ -56,7 +56,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->category_name = $request->category_name;
+        $category->save();
+
+        return new CategoryResource($category);
     }
 
     /**
@@ -67,6 +71,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return new CategoryResource($category);
     }
 }
