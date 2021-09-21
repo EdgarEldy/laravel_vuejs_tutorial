@@ -5,7 +5,7 @@
                 <div class="panel-heading">Product categories</div>
                 <div class="panel-body">
                     <!-- Button trigger modal -->
-                    <button class="btn btn-primary" type="button">New</button>
+                    <button class="btn btn-primary" type="button" @click="newModal">New</button>
                     <br/><br/>
                     <table class="table table-striped table-bordered">
                         <thead>
