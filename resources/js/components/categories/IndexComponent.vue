@@ -140,7 +140,28 @@ export default {
                         title: 'Some error occured! Please try again'
                     });
                 });
-        }
+        },
+
+        updateCategory() {
+            this.form.put('/api/categories/' + this.form.id)
+                .then((response) => {
+                    // success
+                    $('#modalFormCategory').modal('hide');
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    });
+
+                    this.getCategories();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
+
+        },
     }
 };
 </script>
