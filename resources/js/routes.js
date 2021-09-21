@@ -6,6 +6,6 @@ export const routes = [
     },
     {
         path: "/categories",
-        component: require('./components/categories/IndexComponent').default
+        component: require('./components/categories/category-component').default
     }
 ];
