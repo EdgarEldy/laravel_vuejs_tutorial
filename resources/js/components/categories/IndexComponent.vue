@@ -53,7 +53,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form @submit.prevent="editmode ? updateCategory : createCategory">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Category name</label>
