@@ -5,10 +5,8 @@
                 <div class="panel-heading">Product categories</div>
                 <div class="panel-body">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary">
-                        New
-                    </button>
-                    <br><br>
+                    <button class="btn btn-primary" type="button">New</button>
+                    <br/><br/>
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
@@ -23,11 +21,11 @@
                             <td>{{ category.category_name }}</td>
                             <td>
                                 <div class="card-footer">
-                                    <a href="" class="btn btn-primary">Edit</a>
+                                    <a class="btn btn-primary" href="">Edit</a>
                                     <form action="#" method="POST">
-                                        <button type="submit"
-                                                onclick="return confirm('Are you sure you want to delete this category ?')"
-                                                class="btn btn-danger btn-sm">Delete
+                                        <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to delete this category ?')" type="submit">
+                                            Delete
                                         </button>
                                     </form>
                                 </div>
@@ -38,6 +36,32 @@
                 </div>
                 <div class="card-footer">
                     <pagination :data="categories" @pagination-change-page="getResults"></pagination>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="addNew" aria-hidden="true" aria-labelledby="addNew" class="modal fade" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Category name</label>
+                                <input type="text" name="category_name" id="" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                Close
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -54,8 +78,8 @@ export default {
             editmode: false,
             categories: {},
             form: new Form({
-                id: '',
-                category_name: ''
+                id: "",
+                category_name: ""
             })
         };
     },
@@ -69,19 +93,20 @@ export default {
     methods: {
         // Retrieve product categories from backend
         getCategories() {
-            axios.get('http://localhost:8000/api/categories')
+            axios
+                .get("http://localhost:8000/api/categories")
                 .then(response => (this.categories = response.data))
                 .catch(error => console.log(error));
         },
 
         // Load categories with pagination
         getResults(page = 1) {
-            axios.get('/api/categories?page=' + page).then(({data}) => (this.categories = data.data))
+            axios
+                .get("/api/categories?page=" + page)
+                .then(({data}) => (this.categories = data.data));
         }
-    },
-}
+    }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
