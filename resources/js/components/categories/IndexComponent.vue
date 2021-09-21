@@ -129,7 +129,7 @@ export default {
 
                     Toast.fire({
                         icon: 'success',
-                        title: response.data.message
+                        title: 'Category has been saved successfully!'
                     });
 
                     this.getCategories();
