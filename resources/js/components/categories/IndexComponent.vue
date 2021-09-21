@@ -42,7 +42,8 @@
         </div>
 
         <!-- Modal -->
-        <div id="modalFormCategory" aria-hidden="true" aria-labelledby="addNew" class="modal fade" role="dialog" tabindex="-1">
+        <div id="modalFormCategory" aria-hidden="true" aria-labelledby="addNew" class="modal fade" role="dialog"
+             tabindex="-1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -56,8 +57,9 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Category name</label>
-                                <input type="text" v-model="form.category_name" name="category_name" id="" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('category_name') }" />
+                                <input type="text" v-model="form.category_name" name="category_name" id=""
+                                       class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('category_name') }"/>
                                 <has-error field="category_name" :form="form"></has-error>
                             </div>
                         </div>
@@ -117,6 +119,27 @@ export default {
             this.editmode = false;
             this.form.reset();
             $('#modalFormCategory').modal('show');
+        },
+
+        // Create a new category
+        createCategory() {
+            this.form.post('/api/categories')
+                .then((response) => {
+                    $('#modalFormCategory').modal('hide');
+
+                    Toas.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    });
+
+                    this.getCategories();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
         }
     }
 };
