@@ -157,7 +157,7 @@ export default {
                     $('#modalFormCategory').modal('hide');
                     Toast.fire({
                         icon: 'success',
-                        title: response.data.message
+                        title: 'Category has been updated successfully!'
                     });
 
                     this.getCategories();
