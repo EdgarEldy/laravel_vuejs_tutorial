@@ -142,6 +142,14 @@ export default {
                 });
         },
 
+        // Load edit modal
+        editModal(category) {
+            this.editmode = true;
+            this.form.reset();
+            $('#modalFormCategory').modal('show');
+            this.form.fill(category);
+        },
+
         updateCategory() {
             this.form.put('/api/categories/' + this.form.id)
                 .then((response) => {
