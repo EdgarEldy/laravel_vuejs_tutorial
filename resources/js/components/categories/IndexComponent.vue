@@ -56,7 +56,9 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Category name</label>
-                                <input type="text" name="category_name" id="" class="form-control"/>
+                                <input type="text" v-model="form.category_name" name="category_name" id="" class="form-control"
+                                :class="{ 'is-invalid': form.errors.has('category_name') }" />
+                                <has-error field="category_name" :form="form"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
