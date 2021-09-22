@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class ProductFactory extends Factory
 {
@@ -21,8 +23,13 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        // Load categories
+        $categories = array_column(Category::all()->toArray(), 'id');
         return [
             //
+            'category_id' => Arr::random($categories),
+            'product_name' => $this->faker->name,
+            'unit_price' => $this->faker->randomNumber(4)
         ];
     }
 }
