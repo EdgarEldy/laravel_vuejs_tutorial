@@ -64,7 +64,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
+        }
+
+        $product = Product::findOrFail($id);
+        $product->category_id = $request->category_id;
+        $product->product_name = $request->product_name;
+        $product->unit_price = $request->unit_price;
+
+        $product->save();
+
+        return new ProductResource($product);
     }
 
     /**
