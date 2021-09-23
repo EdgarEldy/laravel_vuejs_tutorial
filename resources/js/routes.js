@@ -7,5 +7,9 @@ export const routes = [
     {
         path: "/categories",
         component: require('./components/categories/category-component').default
+    },
+    {
+        path: "/products",
+        component: require('./components/products/product-component').default
     }
 ];
