@@ -78,7 +78,8 @@ export default {
                 category_id: '',
                 product_name: '',
                 unit_price: ''
-            })
+            }),
+            categories: {}
         }
     },
 
