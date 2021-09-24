@@ -5,7 +5,7 @@
                 <div class="panel-heading">Products</div>
                 <div class="panel-body">
                     <!-- Button trigger modal -->
-                    <button class="btn btn-primary" type="button">New</button>
+                    <button class="btn btn-primary" type="button" @click="newModal">New</button>
                     <br/><br/>
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -93,6 +93,12 @@ export default {
             axios.get('/api/products')
                 .then(response => this.products = response.data)
                 .catch(error => console.log(error));
+        },
+
+        newModal(){
+            this.editmode = false;
+            this.form.reset();
+            $('#modalFormProduct').modal('show');
         }
     }
 }
