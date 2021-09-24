@@ -36,8 +36,7 @@
             </div>
         </div>
 
-        <div id="modalFormProduct" aria-hidden="true" aria-labelledby="modalFormProduct" class="modal fade" role="dialog"
-             tabindex="-1">
+        <div id="modalFormProduct" aria-hidden="true" aria-labelledby="modalFormProduct" class="modal fade" role="dialog" tabindex="-1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -73,7 +72,13 @@ export default {
     data() {
         return {
             editmode: false,
-            products: {}
+            products: {},
+            form: new Form({
+                id: '',
+                category_id: '',
+                product_name: '',
+                unit_price: ''
+            })
         }
     },
 
