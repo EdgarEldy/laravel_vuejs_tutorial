@@ -84,7 +84,11 @@ export default {
     },
 
     created() {
+        // Products
         this.loadProducts();
+
+        // Categories
+        this.loadCategories();
     },
 
     // methods goes here
@@ -96,11 +100,19 @@ export default {
                 .catch(error => console.log(error));
         },
 
-        newModal(){
+        newModal() {
             this.editmode = false;
             this.form.reset();
             $('#modalFormProduct').modal('show');
-        }
+        },
+
+        //Load categories
+        loadCategories() {
+            axios
+                .get("http://localhost:8000/api/categories")
+                .then(response => (this.categories = response.data))
+                .catch(error => console.log(error));
+        },
     }
 }
 </script>
