@@ -36,12 +36,12 @@
           </a>
           <ul class="children collapse" id="sub-item-1">
             <li>
-              <a class="" href="#">
+              <router-link to="/products">
                 <svg class="glyph stroked chevron-right">
                   <use xlink:href="#stroked-chevron-right"></use>
                 </svg>
                 All products
-              </a>
+              </router-link>
             </li>
             <li>
               <router-link to="/categories"
