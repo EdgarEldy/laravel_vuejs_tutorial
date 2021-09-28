@@ -40,8 +40,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" v-show="!editmode">Create New Category</h5>
-                        <h5 class="modal-title" v-show="editmode">Update Category</h5>
+                        <h5 class="modal-title" v-show="!editmode">Create New Product</h5>
+                        <h5 class="modal-title" v-show="editmode">Update Product</h5>
                         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
