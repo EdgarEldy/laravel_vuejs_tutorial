@@ -59,6 +59,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Product name</label>
+                                <input type="text" v-model="product_name" name="product_name" class="form-control" :class="{ 'is-invalid': form.errors.has('product_name') }">
+                                <has-error field="product_name" :form="form"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
