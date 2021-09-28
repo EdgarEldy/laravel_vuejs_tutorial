@@ -46,7 +46,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form @submit.prevent="editmode ? updateProduct() : createProduct()">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="Category">Select categories</label>
