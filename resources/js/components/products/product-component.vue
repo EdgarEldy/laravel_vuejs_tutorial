@@ -23,7 +23,7 @@
                             <td>{{ product.unit_price }}</td>
                             <td>
                                 <div class="card-footer">
-                                    <a class="btn btn-primary" href="#">Edit</a>
+                                    <a class="btn btn-primary" href="#" @click="editModal(product)">Edit</a>
                                     <a class="btn btn-danger" href="#">
                                         Remove
                                     </a>
