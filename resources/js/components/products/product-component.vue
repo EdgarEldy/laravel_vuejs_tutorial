@@ -62,6 +62,11 @@
                                 <input type="text" v-model="product_name" name="product_name" class="form-control" :class="{ 'is-invalid': form.errors.has('product_name') }">
                                 <has-error field="product_name" :form="form"></has-error>
                             </div>
+                            <div class="form-group">
+                                <label>Unit price</label>
+                                <input type="text" v-model="unit_price" name="unit_price" class="form-control" :class="{ 'is-invalid': form.errors.has('unit_price') }">
+                                <has-error field="unit_price" :form="form"></has-error>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-dismiss="modal" type="button">
