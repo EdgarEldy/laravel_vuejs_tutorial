@@ -55,6 +55,7 @@
                                         {{ category.category_name }}
                                     </option>
                                 </select>
+                                <has-error field="category_id" :form="form"></has-error>
                             </div>
                             <div class="form-group">
                                 <label>Product name</label>
