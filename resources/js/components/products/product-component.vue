@@ -129,6 +129,27 @@ export default {
                 .then(response => (this.categories = response.data))
                 .catch(error => console.log(error));
         },
+
+        // Create a new product
+        createProduct() {
+            this.form.post('/api/products')
+                .then((response) => {
+                    $('#modalFormProduct').modal('hide');
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product has been saved successfully!'
+                    });
+
+                    this.loadProducts();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
+        },
     }
 }
 </script>
