@@ -158,6 +158,27 @@ export default {
             $('#modalFormProduct').modal('show');
             this.form.fill(product);
         },
+
+        // Update a product
+        updateProduct() {
+            this.form.put('/api/products/' + this.form.id)
+                .then((response) => {
+                    // success
+                    $('#modalFormProduct').modal('hide');
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product has been updated successfully!'
+                    });
+
+                    this.loadProducts();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
+        },
     }
 }
 </script>
