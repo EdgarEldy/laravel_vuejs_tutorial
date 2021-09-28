@@ -150,6 +150,14 @@ export default {
                     });
                 });
         },
+
+        // Load edit modal
+        editModal(product) {
+            this.editmode = true;
+            this.form.reset();
+            $('#modalFormProduct').modal('show');
+            this.form.fill(product);
+        },
     }
 }
 </script>
