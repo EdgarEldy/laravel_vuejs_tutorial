@@ -89,6 +89,9 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+
+        return new CustomerResource($customer);
     }
 }
