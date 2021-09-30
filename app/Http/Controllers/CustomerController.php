@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerFormRequest;
 use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -26,9 +27,22 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerFormRequest $request)
     {
-        //
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
+        }
+
+        $customer = new Customer();
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->tel = $request->tel;
+        $customer->email = $request->email;
+        $customer->address = $request->address;
+
+        $customer->save();
+
+        return new CustomerResource($customer);
     }
 
     /**
