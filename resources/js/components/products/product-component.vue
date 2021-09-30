@@ -23,7 +23,7 @@
                             <td>{{ product.unit_price }}</td>
                             <td>
                                 <div class="card-footer">
-                                    <a class="btn btn-primary" href="#">Edit</a>
+                                    <a class="btn btn-primary" href="#" @click="editModal(product)">Edit</a>
                                     <a class="btn btn-danger" href="#">
                                         Remove
                                     </a>
@@ -40,16 +40,32 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" v-show="!editmode">Create New Category</h5>
-                        <h5 class="modal-title" v-show="editmode">Update Category</h5>
+                        <h5 class="modal-title" v-show="!editmode">Create New Product</h5>
+                        <h5 class="modal-title" v-show="editmode">Update Product</h5>
                         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form @submit.prevent="editmode ? updateProduct() : createProduct()">
                         <div class="modal-body">
                             <div class="form-group">
+                                <label for="Category">Select categories</label>
+                                <select class="form-control" v-model="form.category_id">
+                                    <option v-for="(category,id) in categories.data" :key="category.id" :value="id" :selected="id === form.category_id">
+                                        {{ category.category_name }}
+                                    </option>
+                                </select>
+                                <has-error field="category_id" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
                                 <label>Product name</label>
+                                <input type="text" v-model="product_name" name="product_name" class="form-control" :class="{ 'is-invalid': form.errors.has('product_name') }">
+                                <has-error field="product_name" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label>Unit price</label>
+                                <input type="text" v-model="unit_price" name="unit_price" class="form-control" :class="{ 'is-invalid': form.errors.has('unit_price') }">
+                                <has-error field="unit_price" :form="form"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -112,6 +128,56 @@ export default {
                 .get("http://localhost:8000/api/categories")
                 .then(response => (this.categories = response.data))
                 .catch(error => console.log(error));
+        },
+
+        // Create a new product
+        createProduct() {
+            this.form.post('/api/products')
+                .then((response) => {
+                    $('#modalFormProduct').modal('hide');
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product has been saved successfully!'
+                    });
+
+                    this.loadProducts();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
+        },
+
+        // Load edit modal
+        editModal(product) {
+            this.editmode = true;
+            this.form.reset();
+            $('#modalFormProduct').modal('show');
+            this.form.fill(product);
+        },
+
+        // Update a product
+        updateProduct() {
+            this.form.put('/api/products/' + this.form.id)
+                .then((response) => {
+                    // success
+                    $('#modalFormProduct').modal('hide');
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Product has been updated successfully!'
+                    });
+
+                    this.loadProducts();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
         },
     }
 }
