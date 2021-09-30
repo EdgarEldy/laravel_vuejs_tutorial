@@ -63,9 +63,22 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CustomerFormRequest $request, $id)
     {
-        //
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
+        }
+
+        $customer = Customer::findOrFail($id);
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->tel = $request->tel;
+        $customer->email = $request->email;
+        $customer->address = $request->address;
+
+        $customer->save();
+
+        return new CustomerResource($customer);
     }
 
     /**
