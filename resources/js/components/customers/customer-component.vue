@@ -20,12 +20,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr v-for="customer in customers.data" :key="customer.id">
+                            <td>{{ customer.Id }}</td>
+                            <td><{{ customer.first_name }}/td>
+                            <td>{{ customer.last_name }}</td>
+                            <td>{{ customer.tel }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.address }}</td>
                             <td></td>
                             <td>
                                 <div class="card-footer">
