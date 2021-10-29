@@ -55,7 +55,8 @@ export default {
     },
 
     created() {
-
+        // Call loadCustomers method and mount
+        this.loadCustomers();
     },
 
     // Methods goes here..
