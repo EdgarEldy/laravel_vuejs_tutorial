@@ -21,13 +21,12 @@
                         </thead>
                         <tbody>
                         <tr v-for="customer in customers.data" :key="customer.id">
-                            <td>{{ customer.Id }}</td>
-                            <td><{{ customer.first_name }}/td>
+                            <td>{{ customer.id }}</td>
+                            <td>{{ customer.first_name }}</td>
                             <td>{{ customer.last_name }}</td>
                             <td>{{ customer.tel }}</td>
                             <td>{{ customer.email }}</td>
                             <td>{{ customer.address }}</td>
-                            <td></td>
                             <td>
                                 <div class="card-footer">
                                     <a class="btn btn-primary" href="#">Edit</a>
