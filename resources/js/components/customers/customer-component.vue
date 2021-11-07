@@ -41,6 +41,67 @@
                 </div>
             </div>
         </div>
+
+        <!-- Customer Modal -->
+        <div id="modalFormCustomer" aria-hidden="true" aria-labelledby="addNew" class="modal fade" role="dialog"
+             tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="!editmode">Create New Category</h5>
+                        <h5 class="modal-title" v-show="editmode">Update Category</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>First name</label>
+                                <input type="text" v-model="form.first_name" name="first_name" id=""
+                                       class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('first_name') }"/>
+                                <has-error field="first_name" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label>Last name</label>
+                                <input type="text" v-model="form.last_name" name="last_name" id=""
+                                       class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('last_name') }"/>
+                                <has-error field="last_name" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label>Telephone</label>
+                                <input type="text" v-model="form.tel" name="tel" id=""
+                                       class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('tel') }"/>
+                                <has-error field="tel" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" v-model="form.email" name="email" id=""
+                                       class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('email') }"/>
+                                <has-error field="email" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" v-model="form.address" name="address" id=""
+                                       class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('address') }"/>
+                                <has-error field="address" :form="form"></has-error>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
