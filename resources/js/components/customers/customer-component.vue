@@ -54,7 +54,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form @submit.prevent="createCustomer">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>First name</label>
