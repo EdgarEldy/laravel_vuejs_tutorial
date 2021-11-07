@@ -5,7 +5,7 @@
                 <div class="panel-heading">Customers</div>
                 <div class="panel-body">
                     <!-- Button trigger modal -->
-                    <button class="btn btn-primary" type="button">New</button>
+                    <button class="btn btn-primary" type="button" @click="newModal">New</button>
                     <br/><br/>
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -140,6 +140,13 @@ export default {
                 .get("/api/customers")
                 .then(response => (this.customers = response.data))
                 .catch(error => console.log(error));
+        },
+
+        //Open formModalCustomer modal for adding a new customer
+        newModal() {
+            this.editmode = false;
+            this.form.reset();
+            $('#modalFormCustomer').modal('show');
         },
     }
 }
