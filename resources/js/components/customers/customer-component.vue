@@ -148,6 +148,27 @@ export default {
             this.form.reset();
             $('#modalFormCustomer').modal('show');
         },
+
+        // Add a new customer
+        createCustomer() {
+            this.form.post('/api/customers')
+                .then((response) => {
+                    $('#modalFormCustomer').modal('hide');
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Customer has been saved successfully!'
+                    });
+
+                    this.loadCustomers();
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Some error occured! Please try again'
+                    });
+                });
+        },
     }
 }
 </script>
