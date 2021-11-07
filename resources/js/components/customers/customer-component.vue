@@ -29,7 +29,7 @@
                             <td>{{ customer.address }}</td>
                             <td>
                                 <div class="card-footer">
-                                    <a class="btn btn-primary" href="#">Edit</a>
+                                    <a class="btn btn-primary" href="#" @click="editModal(customer)">Edit</a>
                                     <a class="btn btn-danger" href="#">
                                         Remove
                                     </a>
@@ -168,6 +168,14 @@ export default {
                         title: 'Some error occured! Please try again'
                     });
                 });
+        },
+
+         // Load edit modal
+        editModal(customer) {
+            this.editmode = true;
+            this.form.reset();
+            $('#modalFormCustomer').modal('show');
+            this.form.fill(customer);
         },
     }
 }
