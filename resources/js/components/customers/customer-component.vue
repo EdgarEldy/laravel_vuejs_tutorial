@@ -49,6 +49,8 @@ export default {
     name: "customer-component",
     data() {
         return {
+            // Set editmode property to false
+            editmode: false,
             customers: {}
         }
     },
