@@ -51,7 +51,17 @@ export default {
         return {
             // Set editmode property to false
             editmode: false,
-            customers: {}
+            customers: {},
+
+            // Initialize customer form object
+            form: new Form({
+                id: "",
+                first_name: "",
+                last_name: "",
+                tel: "",
+                email: "",
+                address: "",
+            })
         }
     },
 
