@@ -27,11 +27,8 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerFormRequest $request)
+    public function store(Request $request)
     {
-        if (isset($request->validator) && $request->validator->fails()) {
-            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
-        }
 
         $customer = new Customer();
         $customer->first_name = $request->first_name;
