@@ -30,7 +30,7 @@
                             <td>
                                 <div class="card-footer">
                                     <a class="btn btn-primary" href="#" @click="editModal(customer)">Edit</a>
-                                    <a class="btn btn-danger" href="#">
+                                    <a class="btn btn-danger" href="#" @click="deleteCustomer(customer.id)">
                                         Remove
                                     </a>
                                 </div>
@@ -198,6 +198,34 @@ export default {
                     });
                 });
 
+        },
+
+        // Remove a customer
+        deleteCustomer(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+
+                // Send request to the server
+                if (result.value) {
+                    this.form.delete('api/customers/' + id).then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Customer has been deleted.',
+                            'success'
+                        );
+
+                        this.loadCustomers();
+                    }).catch((data) => {
+                        Swal.fire("Failed!", data.message, "warning");
+                    });
+                }
+            })
         },
     }
 }
