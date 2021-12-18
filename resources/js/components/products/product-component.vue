@@ -54,9 +54,10 @@
                             <div class="form-group">
                                 <label for="Category">Select categories</label>
                                 <select class="form-control" v-model="form.category_id">
-                                    <option v-for="(category,id) in categories.data" :key="category.id" :value="id"
-                                            :selected="id === form.category_id">
-                                        {{ category.category_name }}
+                                    <option
+                                        v-for="(category_name,id) in categories" :key="id"
+                                        :value="index"
+                                        :selected="id == form.category_id">{{ category_name }}
                                     </option>
                                 </select>
                                 <has-error field="category_id" :form="form"></has-error>
