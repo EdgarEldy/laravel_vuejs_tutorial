@@ -11,6 +11,7 @@
                         <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Category name</th>
                             <th>Product name</th>
                             <th>Unit price</th>
                             <th>Options</th>
@@ -19,6 +20,7 @@
                         <tbody>
                         <tr v-for="product in products.data" :key="product.id">
                             <td>{{ product.id }}</td>
+                            <td>{{ product.category.category_name }}</td>
                             <td>{{ product.product_name }}</td>
                             <td>{{ product.unit_price }}</td>
                             <td>
