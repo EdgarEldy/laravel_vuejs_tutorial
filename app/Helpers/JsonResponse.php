@@ -44,6 +44,11 @@ if (!function_exists('sendError')) {
 
 // Return unauthorized response.
 if (!function_exists('unauthorizedResponse')) {
+    /**
+     * @param $error
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     */
     function unauthorizedResponse($error = 'Forbidden', $code = 403)
     {
         $response = [
