@@ -35,7 +35,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->save();
 
-        return new CategoryResource($category);
+        return sendResponse($category, 'Category created successfully !');
     }
 
     /**
