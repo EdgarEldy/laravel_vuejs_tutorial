@@ -19,7 +19,7 @@ class ProductController extends Controller
         // Get products with their categories
         $products = Product::with('category')->get();
 
-        return ProductResource::collection($products);
+        return sendResponse($products, 'Products list');
     }
 
     /**
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return new ProductResource($product);
+        return sendResponse($product, 'Product has been created successfully !');
     }
 
     /**
@@ -75,7 +75,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return new ProductResource($product);
+        return sendResponse($product, 'Product has been updated successfully !');
     }
 
     /**
@@ -89,6 +89,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return new ProductResource($product);
+        return sendResponse($product, 'Product has been delete successfully !');
     }
 }
