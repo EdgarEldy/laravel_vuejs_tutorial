@@ -38,7 +38,8 @@
             </div>
         </div>
 
-        <div id="modalFormProduct" aria-hidden="true" aria-labelledby="modalFormProduct" class="modal fade" role="dialog" tabindex="-1">
+        <div id="modalFormProduct" aria-hidden="true" aria-labelledby="modalFormProduct" class="modal fade"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -53,7 +54,8 @@
                             <div class="form-group">
                                 <label for="Category">Select categories</label>
                                 <select class="form-control" v-model="form.category_id">
-                                    <option v-for="(category,id) in categories.data" :key="category.id" :value="id" :selected="id === form.category_id">
+                                    <option v-for="(category,id) in categories.data" :key="category.id" :value="id"
+                                            :selected="id === form.category_id">
                                         {{ category.category_name }}
                                     </option>
                                 </select>
@@ -61,12 +63,14 @@
                             </div>
                             <div class="form-group">
                                 <label>Product name</label>
-                                <input type="text" v-model="product_name" name="product_name" class="form-control" :class="{ 'is-invalid': form.errors.has('product_name') }">
+                                <input type="text" v-model="product_name" name="product_name" class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('product_name') }">
                                 <has-error field="product_name" :form="form"></has-error>
                             </div>
                             <div class="form-group">
                                 <label>Unit price</label>
-                                <input type="text" v-model="unit_price" name="unit_price" class="form-control" :class="{ 'is-invalid': form.errors.has('unit_price') }">
+                                <input type="text" v-model="unit_price" name="unit_price" class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('unit_price') }">
                                 <has-error field="unit_price" :form="form"></has-error>
                             </div>
                         </div>
@@ -114,7 +118,7 @@ export default {
         // Load all products
         loadProducts() {
             axios.get('/api/products')
-                .then(response => this.products = response.data)
+                .then(({data}) => (this.products = data.data))
                 .catch(error => console.log(error));
         },
 
@@ -128,7 +132,7 @@ export default {
         loadCategories() {
             axios
                 .get("http://localhost:8000/api/categories")
-                .then(response => (this.categories = response.data))
+                .then(({data}) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
 
