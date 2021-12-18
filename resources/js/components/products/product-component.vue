@@ -132,7 +132,7 @@ export default {
         //Load categories
         loadCategories() {
             axios
-                .get("http://localhost:8000/api/categories")
+                .get('/api/categories/list')
                 .then(({data}) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
