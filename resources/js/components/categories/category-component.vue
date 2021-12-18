@@ -99,7 +99,7 @@ export default {
         getCategories() {
             axios
                 .get("http://localhost:8000/api/categories")
-                .then(response => (this.categories = response.data))
+                .then(({ data }) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
 
