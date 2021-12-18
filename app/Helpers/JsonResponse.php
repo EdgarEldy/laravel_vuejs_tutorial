@@ -18,3 +18,26 @@ if (!function_exists('sendResponse')) {
         return $response()->json($response, 200);
     }
 }
+
+// Return error response
+if (!function_exists('sendError')) {
+    /**
+     * @param $error
+     * @param array $errorMessages
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     */
+    function sendError($error, $errorMessages = [], $code = 404)
+    {
+        $response = [
+            'success' => false,
+            'message' => $error,
+        ];
+
+        if (!empty($errorMessages)) {
+            $response['data'] = $errorMessages;
+        }
+
+        return response()->json($response, $code);
+    }
+}
