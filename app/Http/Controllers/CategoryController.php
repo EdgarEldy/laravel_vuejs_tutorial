@@ -17,7 +17,9 @@ class CategoryController extends Controller
     {
         $categories = Category::paginate(10);
 
-        return CategoryResource::collection($categories);
+//        return CategoryResource::collection($categories);
+        return sendResponse($categories, 'Categories');
+
     }
 
     /**
@@ -33,7 +35,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->save();
 
-        return new CategoryResource($category);
+        return sendResponse($category, 'Category created successfully !');
     }
 
     /**
@@ -60,7 +62,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->save();
 
-        return new CategoryResource($category);
+        return sendResponse($category, 'Category has been updated successfully !');
     }
 
     /**
@@ -74,6 +76,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return new CategoryResource($category);
+        return sendResponse($category, 'Category has been deleted !');
     }
 }

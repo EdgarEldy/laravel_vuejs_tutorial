@@ -99,7 +99,7 @@ export default {
         getCategories() {
             axios
                 .get("http://localhost:8000/api/categories")
-                .then(response => (this.categories = response.data))
+                .then(({ data }) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
 
@@ -125,7 +125,7 @@ export default {
 
                     Toast.fire({
                         icon: 'success',
-                        title: 'Category has been saved successfully!'
+                        title: response.data.message
                     });
 
                     this.getCategories();
@@ -153,7 +153,7 @@ export default {
                     $('#modalFormCategory').modal('hide');
                     Toast.fire({
                         icon: 'success',
-                        title: 'Category has been updated successfully!'
+                        title: response.data.message
                     });
 
                     this.getCategories();
