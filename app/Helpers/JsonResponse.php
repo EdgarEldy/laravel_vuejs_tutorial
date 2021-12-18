@@ -41,3 +41,16 @@ if (!function_exists('sendError')) {
         return response()->json($response, $code);
     }
 }
+
+// Return unauthorized response.
+if (!function_exists('unauthorizedResponse')) {
+    function unauthorizedResponse($error = 'Forbidden', $code = 403)
+    {
+        $response = [
+            'success' => false,
+            'message' => $error,
+        ];
+
+        return response()->json($response, $code);
+    }
+}
