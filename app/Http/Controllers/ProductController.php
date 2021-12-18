@@ -30,10 +30,6 @@ class ProductController extends Controller
      */
     public function store(ProductFormRequest $request)
     {
-        if (isset($request->validator) && $request->validator->fails()) {
-            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
-        }
-
         $product = new Product();
         $product->category_id = $request->category_id;
         $product->product_name = $request->product_name;
