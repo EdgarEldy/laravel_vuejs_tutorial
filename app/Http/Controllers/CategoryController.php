@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->save();
 
-        return new CategoryResource($category);
+        return sendResponse($category, 'Category has been updated successfully !');
     }
 
     /**
@@ -76,6 +76,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return new CategoryResource($category);
+        return sendResponse($category, 'Category has been deleted !');
     }
 }
