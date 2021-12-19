@@ -27,7 +27,7 @@ class ProductFormRequest extends FormRequest
         return [
             // Add validations
             'category_id' => 'required',
-            'product_name' => 'required',
+            'product_name' => 'required|string|max:100',
             'unit_price' => 'required|numeric'
         ];
     }
