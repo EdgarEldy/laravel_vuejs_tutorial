@@ -64,13 +64,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Product name</label>
-                                <input type="text" v-model="product_name" name="product_name" class="form-control"
+                                <input type="text" v-model="form.product_name" name="product_name" class="form-control"
                                        :class="{ 'is-invalid': form.errors.has('product_name') }">
                                 <has-error field="product_name" :form="form"></has-error>
                             </div>
                             <div class="form-group">
                                 <label>Unit price</label>
-                                <input type="text" v-model="unit_price" name="unit_price" class="form-control"
+                                <input type="text" v-model="form.unit_price" name="unit_price" class="form-control"
                                        :class="{ 'is-invalid': form.errors.has('unit_price') }">
                                 <has-error field="unit_price" :form="form"></has-error>
                             </div>
