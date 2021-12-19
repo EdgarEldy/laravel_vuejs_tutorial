@@ -140,15 +140,22 @@ export default {
         // Create a new product
         createProduct() {
             this.form.post('/api/products')
-                .then((response) => {
-                    $('#modalFormProduct').modal('hide');
+                .then((data) => {
+                    if (data.data.success) {
+                        $('#modalFormProduct').modal('hide');
 
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Product has been saved successfully!'
-                    });
+                        Toast.fire({
+                            icon: 'success',
+                            title: data.data.message
+                        });
 
-                    this.loadProducts();
+                        this.loadProducts();
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Some error occured! Please try again'
+                        });
+                    }
                 })
                 .catch(() => {
                     Toast.fire({
