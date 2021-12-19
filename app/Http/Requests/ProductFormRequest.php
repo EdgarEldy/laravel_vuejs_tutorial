@@ -28,7 +28,7 @@ class ProductFormRequest extends FormRequest
             // Add validations
             'category_id' => 'required',
             'product_name' => 'required',
-            'unit_price' => 'required'
+            'unit_price' => 'required|numeric'
         ];
     }
 }
