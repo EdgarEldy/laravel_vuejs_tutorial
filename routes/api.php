@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Categories routes
+Route::get('categories/list', [CategoryController::class, 'list']);
 Route::apiResource('categories', CategoryController::class);
 
 // Products routes

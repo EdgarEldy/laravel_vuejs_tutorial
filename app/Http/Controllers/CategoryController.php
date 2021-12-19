@@ -23,6 +23,17 @@ class CategoryController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function list()
+    {
+        $categories = Category::all();
+        $lists = $categories->pluck('category_name','id');
+
+        return sendResponse($lists, 'Categories for dropdrown list');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request

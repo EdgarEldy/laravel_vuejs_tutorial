@@ -7,13 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProductFormRequest extends FormRequest
 {
-    /*
-    * Validator instance updated on failedValidation
-    *
-    * @var \Illuminate\Contracts\Validation\Validator
-    */
-    public $validator = null;
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -21,7 +14,7 @@ class ProductFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -34,21 +27,8 @@ class ProductFormRequest extends FormRequest
         return [
             // Add validations
             'category_id' => 'required',
-            'product_name' => 'required',
-            'unit_price' => 'required'
+            'product_name' => 'required|string|max:100',
+            'unit_price' => 'required|numeric'
         ];
-    }
-
-    /**
-     * Overrid Handle a failed validation attempt.
-     *
-     * @param  Validator  $validator
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        $this->validator = $validator;
     }
 }
