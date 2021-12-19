@@ -56,7 +56,7 @@
                                 <select class="form-control" v-model="form.category_id">
                                     <option
                                         v-for="(category_name,id) in categories" :key="id"
-                                        :value="index"
+                                        :value="id"
                                         :selected="id == form.category_id">{{ category_name }}
                                     </option>
                                 </select>
