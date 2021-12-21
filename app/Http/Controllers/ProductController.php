@@ -17,9 +17,9 @@ class ProductController extends Controller
     public function index()
     {
         // Get products with their categories
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(10);
 
-        return ProductResource::collection($products);
+        return sendResponse($products, 'Products list');
     }
 
     /**
@@ -30,10 +30,6 @@ class ProductController extends Controller
      */
     public function store(ProductFormRequest $request)
     {
-        if (isset($request->validator) && $request->validator->fails()) {
-            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
-        }
-
         $product = new Product();
         $product->category_id = $request->category_id;
         $product->product_name = $request->product_name;
@@ -41,7 +37,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return new ProductResource($product);
+        return sendResponse($product, 'Product has been created successfully !');
     }
 
     /**
@@ -75,7 +71,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return new ProductResource($product);
+        return sendResponse($product, 'Product has been updated successfully !');
     }
 
     /**
@@ -89,6 +85,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return new ProductResource($product);
+        return sendResponse($product, 'Product has been delete successfully !');
     }
 }
