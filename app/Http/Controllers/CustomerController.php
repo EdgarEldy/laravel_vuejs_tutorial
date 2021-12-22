@@ -18,7 +18,7 @@ class CustomerController extends Controller
     {
         //
         $customers = Customer::paginate(10);
-        return CustomerResource::collection($customers);
+        return sendResponse($customers, 'Customers list');
     }
 
     /**
@@ -39,7 +39,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return new CustomerResource($customer);
+        return sendResponse($customer, 'Customer has been saved successfully');
     }
 
     /**
@@ -71,7 +71,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return new CustomerResource($customer);
+        return sendResponse($customer, 'Customer has been updated successfully');
     }
 
     /**
@@ -85,6 +85,6 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         $customer->delete();
 
-        return new CustomerResource($customer);
+        return sendResponse($customer, 'Customer has been removed successfully');
     }
 }
