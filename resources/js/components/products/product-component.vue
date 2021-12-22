@@ -26,7 +26,7 @@
                             <td>
                                 <div class="card-footer">
                                     <a class="btn btn-primary" href="#" @click="editModal(product)">Edit</a>
-                                    <a class="btn btn-danger" href="#">
+                                    <a class="btn btn-danger" href="#" @click="deleteProduct(product.id)">
                                         Remove
                                     </a>
                                 </div>
@@ -193,6 +193,35 @@ export default {
                     });
                 });
         },
+
+        // Delete a product
+        deleteProduct(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+
+                // Send request to the server
+                if (result.value) {
+                    this.form.delete('api/products/' + id).then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Product has been deleted.',
+                            'success'
+                        );
+
+                        this.loadProducts();
+                    }).catch((data) => {
+                        Swal.fire("Failed!", data.message, "warning");
+                    });
+                }
+            })
+        },
+
     }
 }
 </script>
