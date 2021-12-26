@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,6 @@ Route::apiResource('products', ProductController::class);
 
 // Customers routes
 Route::apiResource('customers', CustomerController::class);
+
+// Orders routes
+Route::apiResource('orders', OrderController::class);
