@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model
+{
+    use HasFactory;
+
+    // Add relationship to Customer Model
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    // Add relationship to Product Model
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+}
