@@ -29,7 +29,4 @@ Route::apiResource('categories', CategoryController::class);
 Route::apiResource('products', ProductController::class);
 
 // Customers routes
-Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
-Route::post('/customers', [CustomerController::class, 'store']);
-Route::put('/customers/{id}', [CustomerController::class, 'update']);
-Route::delete('/customers/{id}', [CustomerController::class, 'destroy']);
+Route::apiResource('customers', CustomerController::class);
