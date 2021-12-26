@@ -138,7 +138,7 @@ export default {
         loadCustomers() {
             axios
                 .get("/api/customers")
-                .then(response => (this.customers = response.data))
+                .then(({ data }) => (this.customers = data.data))
                 .catch(error => console.log(error));
         },
 

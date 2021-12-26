@@ -22,16 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Categories routes
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-Route::post('/categories', [CategoryController::class, 'store']);
-Route::put('/categories/{id}', [CategoryController::class, 'update']);
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
+Route::get('categories/list', [CategoryController::class, 'list']);
+Route::apiResource('categories', CategoryController::class);
 
 // Products routes
-Route::get('/products', [ProductController::class, 'index'])->name('products');
-Route::post('/products', [ProductController::class, 'store']);
-Route::put('/products/{id}', [ProductController::class, 'update']);
-Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+Route::apiResource('products', ProductController::class);
 
 // Customers routes
 Route::get('/customers', [CustomerController::class, 'index'])->name('customers');

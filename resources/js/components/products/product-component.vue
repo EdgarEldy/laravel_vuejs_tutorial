@@ -11,6 +11,7 @@
                         <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Category name</th>
                             <th>Product name</th>
                             <th>Unit price</th>
                             <th>Options</th>
@@ -19,12 +20,13 @@
                         <tbody>
                         <tr v-for="product in products.data" :key="product.id">
                             <td>{{ product.id }}</td>
+                            <td>{{ product.category.category_name }}</td>
                             <td>{{ product.product_name }}</td>
                             <td>{{ product.unit_price }}</td>
                             <td>
                                 <div class="card-footer">
                                     <a class="btn btn-primary" href="#" @click="editModal(product)">Edit</a>
-                                    <a class="btn btn-danger" href="#">
+                                    <a class="btn btn-danger" href="#" @click="deleteProduct(product.id)">
                                         Remove
                                     </a>
                                 </div>
@@ -36,7 +38,8 @@
             </div>
         </div>
 
-        <div id="modalFormProduct" aria-hidden="true" aria-labelledby="modalFormProduct" class="modal fade" role="dialog" tabindex="-1">
+        <div id="modalFormProduct" aria-hidden="true" aria-labelledby="modalFormProduct" class="modal fade"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -51,20 +54,24 @@
                             <div class="form-group">
                                 <label for="Category">Select categories</label>
                                 <select class="form-control" v-model="form.category_id">
-                                    <option v-for="(category,id) in categories.data" :key="category.id" :value="id" :selected="id === form.category_id">
-                                        {{ category.category_name }}
+                                    <option
+                                        v-for="(category_name,id) in categories" :key="id"
+                                        :value="id"
+                                        :selected="id == form.category_id">{{ category_name }}
                                     </option>
                                 </select>
                                 <has-error field="category_id" :form="form"></has-error>
                             </div>
                             <div class="form-group">
                                 <label>Product name</label>
-                                <input type="text" v-model="product_name" name="product_name" class="form-control" :class="{ 'is-invalid': form.errors.has('product_name') }">
+                                <input type="text" v-model="form.product_name" name="product_name" class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('product_name') }">
                                 <has-error field="product_name" :form="form"></has-error>
                             </div>
                             <div class="form-group">
                                 <label>Unit price</label>
-                                <input type="text" v-model="unit_price" name="unit_price" class="form-control" :class="{ 'is-invalid': form.errors.has('unit_price') }">
+                                <input type="text" v-model="form.unit_price" name="unit_price" class="form-control"
+                                       :class="{ 'is-invalid': form.errors.has('unit_price') }">
                                 <has-error field="unit_price" :form="form"></has-error>
                             </div>
                         </div>
@@ -112,7 +119,7 @@ export default {
         // Load all products
         loadProducts() {
             axios.get('/api/products')
-                .then(response => this.products = response.data)
+                .then(({data}) => (this.products = data.data))
                 .catch(error => console.log(error));
         },
 
@@ -125,23 +132,30 @@ export default {
         //Load categories
         loadCategories() {
             axios
-                .get("http://localhost:8000/api/categories")
-                .then(response => (this.categories = response.data))
+                .get('/api/categories/list')
+                .then(({data}) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
 
         // Create a new product
         createProduct() {
             this.form.post('/api/products')
-                .then((response) => {
-                    $('#modalFormProduct').modal('hide');
+                .then((data) => {
+                    if (data.data.success) {
+                        $('#modalFormProduct').modal('hide');
 
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Product has been saved successfully!'
-                    });
+                        Toast.fire({
+                            icon: 'success',
+                            title: data.data.message
+                        });
 
-                    this.loadProducts();
+                        this.loadProducts();
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Some error occured! Please try again'
+                        });
+                    }
                 })
                 .catch(() => {
                     Toast.fire({
@@ -179,6 +193,35 @@ export default {
                     });
                 });
         },
+
+        // Delete a product
+        deleteProduct(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+
+                // Send request to the server
+                if (result.value) {
+                    this.form.delete('api/products/' + id).then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Product has been deleted.',
+                            'success'
+                        );
+
+                        this.loadProducts();
+                    }).catch((data) => {
+                        Swal.fire("Failed!", data.message, "warning");
+                    });
+                }
+            })
+        },
+
     }
 }
 </script>
