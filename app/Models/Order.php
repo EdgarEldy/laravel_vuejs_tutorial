@@ -14,4 +14,10 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    // Add relationship to Product Model
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
