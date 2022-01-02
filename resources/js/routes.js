@@ -15,5 +15,9 @@ export const routes = [
     {
         path: "/customers",
         component: require('./components/customers/customer-component').default
+    },
+    {
+        path: "/orders",
+        component: require('./components/orders/order-component').default
     }
 ];
