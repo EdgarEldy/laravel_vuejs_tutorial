@@ -11,12 +11,12 @@
           </router-link>
         </li>
         <li>
-          <a href=""
+          <router-link to="/orders">
             ><svg class="glyph stroked calendar">
               <use xlink:href="#stroked-calendar"></use>
             </svg>
-            Orders</a
-          >
+            Orders
+          </router-link>
         </li>
         <li>
           <router-link to="/customers"
