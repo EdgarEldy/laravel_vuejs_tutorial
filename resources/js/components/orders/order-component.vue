@@ -66,6 +66,16 @@ export default {
             products: {}
         }
     },
+
+    // methods goes here
+    methods: {
+        // Load all orders
+        loadOrders() {
+            axios.get('/api/orders')
+                .then(({data}) => (this.orders = data.data))
+                .catch(error => console.log(error));
+        },
+    },
 }
 </script>
 
