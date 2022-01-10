@@ -49,7 +49,19 @@
 
 <script>
 export default {
-    name: "order-component"
+    name: "order-component",
+
+    data(){
+        return {
+            editmode: false,
+            orders: {},
+            form: new Form({
+
+            }),
+            customers: {},
+            products: {}
+        }
+    },
 }
 </script>
 
