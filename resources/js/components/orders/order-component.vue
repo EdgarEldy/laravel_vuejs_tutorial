@@ -51,12 +51,16 @@
 export default {
     name: "order-component",
 
-    data(){
+    data() {
         return {
             editmode: false,
             orders: {},
             form: new Form({
-
+                id: '',
+                customer_id: '',
+                product_id: '',
+                qty: '',
+                total: '',
             }),
             customers: {},
             products: {}
