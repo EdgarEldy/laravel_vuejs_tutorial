@@ -65,6 +65,11 @@ export default {
         }
     },
 
+    created() {
+        // Call loadOrders method and mount
+        this.loadOrders();
+    },
+
     // methods goes here
     methods: {
         // Load all orders
