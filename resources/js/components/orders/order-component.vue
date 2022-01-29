@@ -14,21 +14,19 @@
                             <th>First name</th>
                             <th>Last name</th>
                             <th>Product name</th>
-                            <th>Unit price</th>
                             <th>Quantity</th>
                             <th>Total</th>
                             <th>Options</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr v-for="order in orders.data" :key="order.id">
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer.first_name }}</td>
+                            <td>{{ order.customer.last_name }}</td>
+                            <td>{{ order.product.product_name }}</td>
+                            <td>{{ order.qty }}</td>
+                            <td>{{ order.total }}</td>
                             <td>
                                 <div class="card-footer">
                                     <a class="btn btn-primary" href="#">Edit</a>
