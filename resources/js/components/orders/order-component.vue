@@ -14,6 +14,7 @@
                             <th>First name</th>
                             <th>Last name</th>
                             <th>Product name</th>
+                            <th>Unit Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
                             <th>Options</th>
@@ -25,6 +26,7 @@
                             <td>{{ order.customer.first_name }}</td>
                             <td>{{ order.customer.last_name }}</td>
                             <td>{{ order.product.product_name }}</td>
+                            <td>{{ order.product.unit_price}}</td>
                             <td>{{ order.qty }}</td>
                             <td>{{ order.total }}</td>
                             <td>
