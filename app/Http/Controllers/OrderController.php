@@ -28,7 +28,15 @@ class OrderController extends Controller
      */
     public function store(OrderFormRequest $request)
     {
-        //
+        $order = new Order();
+        $order->customer_id = $request->customer_id;
+        $order->product_id = $request->product_id;
+        $order->qty = $request->qty;
+        $order->total = $request->total;
+
+        $order->save();
+
+        return sendResponse($order, 'Order has been saved successfully !');
     }
 
     /**
