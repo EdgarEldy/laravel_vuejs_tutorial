@@ -23,6 +23,17 @@ class ProductController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function list()
+    {
+        $products = Product::all();
+        $lists = $products->pluck('product_name','id');
+
+        return sendResponse($lists, 'Products for dropdrown list');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
