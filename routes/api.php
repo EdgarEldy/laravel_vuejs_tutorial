@@ -30,6 +30,7 @@ Route::apiResource('categories', CategoryController::class);
 Route::apiResource('products', ProductController::class);
 
 // Customers routes
+Route::get('customers/list', [CustomerController::class, 'list']);
 Route::apiResource('customers', CustomerController::class);
 
 // Orders routes
