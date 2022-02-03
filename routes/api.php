@@ -27,7 +27,7 @@ Route::get('categories/list', [CategoryController::class, 'list']);
 Route::apiResource('categories', CategoryController::class);
 
 // Products routes
-Route::get('products/list', [ProductController::class]);
+Route::get('products/list', [ProductController::class])->name('products.list');
 Route::apiResource('products', ProductController::class);
 
 // Customers routes
