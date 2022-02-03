@@ -22,6 +22,17 @@ class CustomerController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function list()
+    {
+        $customers = Customer::all();
+        $lists = $customers->pluck('full_name','id');
+
+        return sendResponse($lists, 'Customers for dropdrown list');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
