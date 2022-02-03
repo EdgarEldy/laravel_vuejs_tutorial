@@ -31,7 +31,7 @@ Route::get('products/list', [ProductController::class])->name('products.list');
 Route::apiResource('products', ProductController::class);
 
 // Customers routes
-Route::get('customers/list', [CustomerController::class, 'list']);
+Route::get('customers/list', [CustomerController::class, 'list'])->name('customers.list');
 Route::apiResource('customers', CustomerController::class);
 
 // Orders routes
