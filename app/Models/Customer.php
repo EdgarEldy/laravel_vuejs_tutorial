@@ -14,4 +14,10 @@ class Customer extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    // Defining the full name accessor
+    public function getFullNameAttributes()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }
