@@ -26,7 +26,7 @@
                             <td>{{ order.customer.first_name }}</td>
                             <td>{{ order.customer.last_name }}</td>
                             <td>{{ order.product.product_name }}</td>
-                            <td>{{ order.product.unit_price}}</td>
+                            <td>{{ order.product.unit_price }}</td>
                             <td>{{ order.qty }}</td>
                             <td>{{ order.total }}</td>
                             <td>
@@ -43,8 +43,35 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Order Form Modal -->
+        <div id="modalFormOrder" aria-hidden="true" aria-labelledby="modalFormOrder" class="modal fade"
+             role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="!editmode">Create New Order</h5>
+                        <h5 class="modal-title" v-show="editmode">Update Order</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Of Order Form Modal -->
+    </div>
+    
 </template>
 
 <script>
