@@ -58,6 +58,17 @@
                     </div>
                     <form>
                         <div class="modal-body">
+                            <div class="form-group">
+                                <label for="Category">Select customer</label>
+                                <select class="form-control" v-model="form.customer_id">
+                                    <option
+                                        v-for="(full_name,id) in customers" :key="id"
+                                        :value="id"
+                                        :selected="id == form.customer_id">{{ full_name }}
+                                    </option>
+                                </select>
+                                <has-error field="category_id" :form="form"></has-error>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-dismiss="modal" type="button">
