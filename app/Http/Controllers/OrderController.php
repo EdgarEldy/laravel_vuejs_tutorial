@@ -59,7 +59,19 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json(array('errors' => $request->validator->getMessageBag()->toArray()));
+        }
+
+        $order = Order::findOrFail($id);
+        $order->customer_id = $request->customer_id;
+        $order->product_id = $request->product_id;
+        $order->qty = $request->qty;
+        $order->total = $request->total;
+
+        $order->save();
+
+        return sendResponse($order, 'Order has been updated successfully !');
     }
 
     /**
