@@ -101,6 +101,7 @@ export default {
                 total: '',
             }),
             customers: {},
+            categories: {},
             products: {}
         }
     },
@@ -134,6 +135,14 @@ export default {
             axios
                 .get('/api/customers/list')
                 .then(({data}) => (this.customers = data.data))
+                .catch(error => console.log(error));
+        },
+
+        //Load categories
+        loadCategories() {
+            axios
+                .get('/api/categories/list')
+                .then(({data}) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
     },
