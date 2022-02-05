@@ -16,7 +16,7 @@ class Customer extends Model
     }
 
     // Defining the full name accessor
-    public function getFullNameAttributes()
+    public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
     }
