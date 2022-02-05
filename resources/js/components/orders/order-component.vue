@@ -5,7 +5,7 @@
                 <div class="panel-heading">Orders</div>
                 <div class="panel-body">
                     <!-- Button trigger modal -->
-                    <button class="btn btn-primary" type="button">New</button>
+                    <button class="btn btn-primary" type="button" @click="newModal">New</button>
                     <br/><br/>
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -26,7 +26,7 @@
                             <td>{{ order.customer.first_name }}</td>
                             <td>{{ order.customer.last_name }}</td>
                             <td>{{ order.product.product_name }}</td>
-                            <td>{{ order.product.unit_price}}</td>
+                            <td>{{ order.product.unit_price }}</td>
                             <td>{{ order.qty }}</td>
                             <td>{{ order.total }}</td>
                             <td>
@@ -43,6 +43,55 @@
                 </div>
             </div>
         </div>
+
+        <!-- Order Form Modal -->
+        <div id="modalFormOrder" aria-hidden="true" aria-labelledby="modalFormOrder" class="modal fade"
+             role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="!editmode">Create New Order</h5>
+                        <h5 class="modal-title" v-show="editmode">Update Order</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="Category">Select customer</label>
+                                <select class="form-control" v-model="form.customer_id">
+                                    <option
+                                        v-for="(full_name,id) in customers" :key="id"
+                                        :value="id"
+                                        :selected="id == form.customer_id">{{ full_name }}
+                                    </option>
+                                </select>
+                                <has-error field="category_id" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label for="Category">Select category</label>
+                                <select class="form-control" v-model="form.category_id" name="category">
+                                    <option
+                                        v-for="(category_name,id) in categories" :key="id"
+                                        :value="id"
+                                        :selected="id == form.category_id">{{ category_name }}
+                                    </option>
+                                </select>
+                                <has-error field="category_id" :form="form"></has-error>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Of Order Form Modal -->
     </div>
 
 </template>
@@ -63,13 +112,22 @@ export default {
                 total: '',
             }),
             customers: {},
-            products: {}
+            categories: {},
+            products: {},
+            category: '',
+            product: ''
         }
     },
 
     created() {
         // Call loadOrders method and mount
         this.loadOrders();
+
+        // Customers
+        this.loadCustomers();
+
+        // Categories
+        this.loadCategories();
     },
 
     // methods goes here
@@ -78,6 +136,29 @@ export default {
         loadOrders() {
             axios.get('/api/orders')
                 .then(({data}) => (this.orders = data.data))
+                .catch(error => console.log(error));
+        },
+
+        // Open order modal
+        newModal() {
+            this.editmode = false;
+            this.form.reset();
+            $('#modalFormOrder').modal('show');
+        },
+
+        //Load customers
+        loadCustomers() {
+            axios
+                .get('/api/customers/list')
+                .then(({data}) => (this.customers = data.data))
+                .catch(error => console.log(error));
+        },
+
+        //Load categories
+        loadCategories() {
+            axios
+                .get('/api/categories/list')
+                .then(({data}) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
     },

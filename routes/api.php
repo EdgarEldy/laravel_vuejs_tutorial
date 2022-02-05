@@ -27,10 +27,13 @@ Route::get('categories/list', [CategoryController::class, 'list']);
 Route::apiResource('categories', CategoryController::class);
 
 // Products routes
+Route::get('products/list', [ProductController::class, 'list'])->name('products.list');
 Route::apiResource('products', ProductController::class);
 
 // Customers routes
+Route::get('customers/list', [CustomerController::class, 'list'])->name('customers.list');
 Route::apiResource('customers', CustomerController::class);
 
 // Orders routes
+Route::get('orders/getProducts', [OrderController::class, 'getProducts']);
 Route::apiResource('orders', OrderController::class);
