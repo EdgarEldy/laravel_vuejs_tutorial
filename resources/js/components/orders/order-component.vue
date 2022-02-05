@@ -114,6 +114,14 @@ export default {
             this.form.reset();
             $('#modalFormOrder').modal('show');
         },
+
+        //Load customers
+        loadCustomers() {
+            axios
+                .get('/api/customers/list')
+                .then(({data}) => (this.customers = data.data))
+                .catch(error => console.log(error));
+        },
     },
 }
 </script>
