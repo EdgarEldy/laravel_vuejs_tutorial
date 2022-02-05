@@ -97,6 +97,9 @@ export default {
     created() {
         // Call loadOrders method and mount
         this.loadOrders();
+
+        // Customers
+        this.loadCustomers();
     },
 
     // methods goes here
