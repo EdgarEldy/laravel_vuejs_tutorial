@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Category">Select category</label>
-                                <select class="form-control" v-model="form.category_id">
+                                <select class="form-control" v-model="form.category_id" name="category">
                                     <option
                                         v-for="(category_name,id) in categories" :key="id"
                                         :value="id"
@@ -113,7 +113,8 @@ export default {
             }),
             customers: {},
             categories: {},
-            products: {}
+            products: {},
+            category: ''
         }
     },
 
