@@ -114,7 +114,8 @@ export default {
             customers: {},
             categories: {},
             products: {},
-            category: ''
+            category: '',
+            product: ''
         }
     },
 
