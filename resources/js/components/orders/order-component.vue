@@ -69,6 +69,17 @@
                                 </select>
                                 <has-error field="category_id" :form="form"></has-error>
                             </div>
+                            <div class="form-group">
+                                <label for="Category">Select category</label>
+                                <select class="form-control" v-model="form.category_id">
+                                    <option
+                                        v-for="(category_name,id) in categories" :key="id"
+                                        :value="id"
+                                        :selected="id == form.category_id">{{ category_name }}
+                                    </option>
+                                </select>
+                                <has-error field="category_id" :form="form"></has-error>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-dismiss="modal" type="button">
@@ -112,6 +123,9 @@ export default {
 
         // Customers
         this.loadCustomers();
+
+        // Categories
+        this.loadCategories();
     },
 
     // methods goes here
