@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Category">Select category</label>
-                                <select class="form-control" v-model="form.category_id" name="category">
+                                <select class="form-control" v-model="category" name="category">
                                     <option
                                         v-for="(category_name,id) in categories" :key="id"
                                         :value="id"
@@ -79,6 +79,17 @@
                                     </option>
                                 </select>
                                 <has-error field="category_id" :form="form"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label for="Category">Select product</label>
+                                <select class="form-control" v-model="form.product_id" name="product">
+                                    <option
+                                        v-for="(product_name,id) in products" :key="id"
+                                        :value="id"
+                                        :selected="id == form.product_id">{{ product_name }}
+                                    </option>
+                                </select>
+                                <has-error field="product_id" :form="form"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -128,6 +139,9 @@ export default {
 
         // Categories
         this.loadCategories();
+
+        // Products
+        this.loadProducts();
     },
 
     // methods goes here
@@ -161,6 +175,14 @@ export default {
                 .then(({data}) => (this.categories = data.data))
                 .catch(error => console.log(error));
         },
+
+        // Load products by category id
+        loadProducts() {
+            axios
+                .get('/api/orders/getProducts', {params: {category: this.category}})
+                .then(({data}) => (this.products = data.data))
+                .catch(error => console.log(error));
+        }
     },
 }
 </script>
