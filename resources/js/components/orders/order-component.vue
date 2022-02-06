@@ -64,7 +64,7 @@
                                     <option
                                         v-for="(full_name,id) in customers" :key="id"
                                         :value="id"
-                                        :selected="id == form.customer_id">{{ full_name }}
+                                        :selected="id === form.customer_id">{{ full_name }}
                                     </option>
                                 </select>
                                 <has-error field="category_id" :form="form"></has-error>
@@ -75,7 +75,7 @@
                                     <option
                                         v-for="(category_name,id) in categories" :key="id"
                                         :value="id"
-                                        :selected="id == form.category_id">{{ category_name }}
+                                        :selected="id === form.category_id">{{ category_name }}
                                     </option>
                                 </select>
                                 <has-error field="category_id" :form="form"></has-error>
